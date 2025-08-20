@@ -98,8 +98,8 @@ moneylang {
 ### 🏦 Accounts
 Digital wallets with unique IDs, balances, and optional overdraft limits.
 
-```kotlin
-// Account structure (configured externally)
+Account structure (configured externally)
+```json
 {
   "id": "@customer:john",
   "balance": "5000.00",
@@ -140,8 +140,10 @@ Dynamic values that can be configured externally:
 ```kotlin
 // In DSL
 varNumber("%%commission_rate%%").percent to "@platform:commission"
+```
 
-// External configuration
+External configuration
+```json
 {
   "placeholder": "%%commission_rate%%",
   "data": 2.5
@@ -156,8 +158,10 @@ Context information for conditional logic:
 condition {
     applyTag("tax", condition = param("country") eq "Nigeria")
 }
+```
 
-// External configuration
+External configuration 
+```json
 {
   "id": "country",
   "data": "Nigeria"
@@ -553,8 +557,7 @@ destination {
             .times(varNumber("%%multiplier%%")) to "@calculated:fees"
     }
 }
-
----
+```
 
 ## Best Practices
 
@@ -613,8 +616,8 @@ destination {
 
 condition {
     applyTag("cashback", 
-        condition = param("loyalty_tier") in listOf("gold", "platinum") and
-                   param("cashback_eligible") eq true
+        condition = (param("loyalty_tier") in listOf("gold", "platinum")) and
+                (param("cashback_eligible") eq true)
     )
 }
 ```
@@ -672,11 +675,6 @@ remaining to "@recipient"
 ---
 
 ## Getting Help
-
-### Learning Resources
-- **Examples Collection**: See `EXAMPLES_COLLECTION.md` for 10 detailed examples
-- **Clean DSL Examples**: Check `DSL_EXAMPLES_CLEAN.md` for copy-paste code
-- **Monaco Editor**: Use the web editor for syntax highlighting and auto-completion
 
 ### Debugging Tips
 1. **Start with exact amounts** before converting to percentages
