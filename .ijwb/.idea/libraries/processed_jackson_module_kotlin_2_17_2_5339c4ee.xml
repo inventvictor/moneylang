@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="processed_jackson-module-kotlin-2.17.2_5339c4ee">
-    <CLASSES>
-      <root url="jar:///private/var/tmp/_bazel_victorshoaga/c30d2591a4d1ca6aa432f043aed1996f/execroot/_main/bazel-out/darwin_arm64-fastbuild/bin/external/maven/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-kotlin/2.17.2/processed_jackson-module-kotlin-2.17.2.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
