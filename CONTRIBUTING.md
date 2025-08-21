@@ -77,7 +77,21 @@ bazel test //...
 bazel test //app:lint_test
 ```
 
-### 4. Run the Application
+### 4. Run Tests
+```bash
+# Run all tests
+bazel test //app/test:all_tests
+
+# Or use the convenient test runner script
+./run_tests.sh
+
+# Run specific test suites
+bazel test //app/test:moneylang_dsl_tests           # DSL functionality tests
+bazel test //app/test:moneylang_processor_tests     # Transaction processing
+bazel test //app/test:moneylang_integration_tests   # End-to-end integration tests
+```
+
+### 5. Run the Application
 ```bash
 # Run the main MoneyLang processor
 bazel run //app:moneylang
@@ -127,8 +141,10 @@ moneylang/
    # Make sure everything builds
    bazel build //...
    
-   # Run tests
-   bazel test //...
+   # Run all tests
+   bazel test //app/test:all_tests
+   # Or use the test runner
+   ./run_tests.sh
    
    # Check linting
    bazel test //app:lint_test
@@ -200,11 +216,53 @@ The project follows these conventions:
 
 ## Testing
 
+MoneyLang has comprehensive test coverage across multiple levels:
+
+### Test Structure
+```
+app/test/
+├── dsl/                # DSL functionality tests
+│   └── MoneyLangDslTest.kt
+├── processor/          # Transaction processing tests
+│   └── TransactionFlowTest.kt
+└── integration/        # End-to-end integration tests
+    └── MoneyLangIntegrationTest.kt
+```
+
+### Running Tests
+```bash
+# Run all tests
+bazel test //app/test:all_tests
+
+# Use the convenient test runner script
+./run_tests.sh
+
+# Run specific test categories
+bazel test //app/test:moneylang_dsl_tests           # DSL functionality
+bazel test //app/test:moneylang_processor_tests     # Transaction processing
+bazel test //app/test:moneylang_integration_tests   # Full end-to-end scenarios
+
+# Run with verbose output
+bazel test //app/test:all_tests --test_output=all
+```
+
+### Writing Tests
 When adding new features:
-1. Add unit tests for core logic
-2. Add integration tests for DSL functionality
-3. Include edge cases and error handling
-4. Test with various currencies and amounts
+1. **Unit Tests**: Test individual classes and methods in isolation
+2. **Integration Tests**: Test complete DSL workflows end-to-end
+3. **Edge Cases**: Test boundary conditions, error handling, and invalid inputs
+4. **Currency Support**: Test with different currency types
+5. **Overdraft Scenarios**: Test account balance limits and overdraft behavior
+
+### Test Coverage Areas
+- ✅ Currency amount handling and validation
+- ✅ Account balance management and overdraft limits
+- ✅ Percentage and exact amount calculations
+- ✅ DSL syntax and structure validation
+- ✅ Transaction flow state management
+- ✅ Complex marketplace scenarios
+- ✅ Multi-currency transactions
+- ✅ Conditional logic and tag application
 
 ## Documentation
 
