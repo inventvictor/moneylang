@@ -1,7 +1,8 @@
 <component name="libraryTable">
-  <library name="KotlinJavaRuntime" type="repository">
+  <library name="kotlin-stdlib_7c33dead" type="repository">
     <properties maven-id="org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.21" />
     <CLASSES>
+      <root url="jar:///private/var/tmp/_bazel_victorshoaga/c30d2591a4d1ca6aa432f043aed1996f/external/com_github_jetbrains_kotlin_git/lib/kotlin-stdlib.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/2.0.21/kotlin-stdlib-jdk8-2.0.21.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/2.0.21/kotlin-stdlib-2.0.21.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0.jar!/" />
