@@ -1,0 +1,38 @@
+load("@rules_java//java:defs.bzl", "java_binary", "java_library")
+load("@rules_kotlin//kotlin:jvm.bzl", "kt_jvm_binary", "kt_jvm_library")
+load("@rules_kotlin//kotlin:lint.bzl", "ktlint_fix", "ktlint_test")
+
+kt_jvm_library(
+    name = "app_lib",
+    srcs = glob(["**/*.kt"]),
+    visibility = ["//visibility:public"],
+    deps = [
+        ":java_deps",
+    ],
+)
+
+java_library(
+    name = "java_deps",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@maven//:com_fasterxml_jackson_module_jackson_module_kotlin",
+    ],
+)
+
+ktlint_test(
+    name = "lint_test",
+    srcs = glob(["**/*.kt"]),
+    config = "//:ktlint_editorconfig",
+)
+
+ktlint_fix(
+    name = "lint_fix",
+    srcs = glob(["**/*.kt"]),
+    config = "//:ktlint_editorconfig",
+)
+
+kt_jvm_binary(
+    name = "moneylang",
+    main_class = "moneylang.MoneyLang",
+    runtime_deps = [":app_lib"],
+)
