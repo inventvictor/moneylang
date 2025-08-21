@@ -1,0 +1,26 @@
+# ignore bazel build folders
+bazel-*
+
+# ignore binaries, executables, jars etc.
+*.bin
+*.exe
+*.jar
+
+# ide related
+.idea
+.ijwb
+.vscode
+
+# lock files
+*.lock
+
+# env files
+*.env
+*.env.sh
+
+# secure files
+*.pem
+*.jks
+
+# os related
+*.DS_Store
